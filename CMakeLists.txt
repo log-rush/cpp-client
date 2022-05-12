@@ -1,14 +1,10 @@
-cmake_minimum_required(VERSION 3.0)
-project(main)
+cmake_minimum_required(VERSION 3.15)
+project(logrushlib)
 
-option(BUILD_EXAMPLES "Build Log-Rush Examples" ON)
-
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
+option(BUILD_EXAMPLES "Build examples" ON)
 
 add_subdirectory(src/)
 
-if (${BUILD_EXAMPLES})
-    add_subdirectory(examples/)
-endif ()
-
-install(TARGETS logrush)
+if(${BUILD_EXAMPLES})
+    add_subdirectory(examples)
+endif()

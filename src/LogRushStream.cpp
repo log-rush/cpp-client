@@ -1,6 +1,6 @@
 #include "logrush/LogRushStream.h"
 
-#include "logrush/http/http.h"
+#include "http/http.h"
 #include <chrono>
 
 namespace logrush

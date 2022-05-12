@@ -1,6 +1,6 @@
 #include "logrush/LogRushClient.h"
 
-#include "logrush/http/http.h"
+#include "http/http.h"
 #include "logrush/LogRushStream.h"
 
 #include <chrono>
