@@ -3,12 +3,6 @@ project(log-rush_examples)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories("../include/")
-
-set(LIBS
-    logrush
-)
-
 add_executable(logrush_basic_example basic_logger_example.cpp)
 target_link_libraries(logrush_basic_example logrush)
 

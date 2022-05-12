@@ -5,10 +5,16 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(CURL REQUIRED)
 
-include_directories("../include/")
+target_include_directories(logrush PUBLIC ../include/)
 
 set(SRC_FILES
-    "main.cpp"
+    "../include/logrush.hpp"
+
+    "../include/LogRushClient.hpp"
+    "../include/LogRushStream.hpp"
+    "../include/json/json.hpp"
+    "../include/http/http.hpp"
+
     "LogRushClient.cpp"
     "LogRushStream.cpp"
 
