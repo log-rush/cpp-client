@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.21)
 project(logrush
     DESCRIPTION "logrush client for c++"
     VERSION 0.0.1
@@ -17,7 +17,7 @@ set(public_headers
     "../include/logrush/LogRushStream.h"
 )
 
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME})
 
 target_sources(${PROJECT_NAME}    
     PRIVATE
@@ -32,6 +32,6 @@ target_include_directories(${PROJECT_NAME}
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
+target_link_libraries(${PROJECT_NAME} CURL::libcurl)
 
 include(Install)
