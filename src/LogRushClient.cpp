@@ -3,6 +3,7 @@
 #include "http/http.h"
 #include "logrush/LogRushStream.h"
 
+#include <iostream>
 #include <chrono>
 
 namespace logrush
@@ -22,6 +23,10 @@ namespace logrush
         }
         json ret = post(url + "/stream/register", b);
 
+        auto m = ret.find("message");
+        if (m->is_string())
+            throw LogRushException((m->get<std::string>()).c_str());
+        
         auto i = ret.find("id");
         if (i->is_string())
             id = i->get<std::string>();
@@ -43,6 +48,10 @@ namespace logrush
             b["key"] = key;
         }
         json ret = post(url + "/stream/register", b);
+
+        auto m = ret.find("message");
+        if (m->is_string())
+            throw LogRushException((m->get<std::string>()).c_str());
 
         auto i = ret.find("id");
         if (i->is_string())

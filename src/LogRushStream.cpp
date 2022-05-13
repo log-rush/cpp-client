@@ -43,7 +43,10 @@ namespace logrush
                 b["logs"].push_back(l); });
             b["stream"] = id;
 
-            post(url, b);
+            auto j = post(url, b);
+            auto m = j.find("message");
+            if (m->is_string())
+                throw LogRushException((m->get<std::string>()).c_str());
             pos = 1;
         }
         else
@@ -63,6 +66,9 @@ namespace logrush
                 b["logs"].push_back(l); });
         b["stream"] = id;
 
-        post(url, b);
+        auto j = post(url, b);
+        auto m = j.find("message");
+        if (m->is_string())
+            throw LogRushException((m->get<std::string>()).c_str());
     }
 } // namespace logrush

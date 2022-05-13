@@ -7,11 +7,17 @@
 int main()
 {
     auto c = logrush::LogRushClient("http://127.0.0.1:7000");
-    auto s = c.register_stream("C++ Basic Example", "", "");
+    try
+    {
+        auto s = c.register_stream("C++ Basic Example", "", "");
 
-    s.log("Hello World!");
+        s.log("Hello World!");
 
-    c.unregister_stream(s);
-
+        c.unregister_stream(s);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     return 0;
 }

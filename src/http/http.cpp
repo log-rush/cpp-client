@@ -28,8 +28,10 @@ namespace logrush
             res = curl_easy_perform(curl);
 
             if (res != CURLE_OK)
-                fprintf(stderr, "curl_easy_perform() failed: %s\n",
-                        curl_easy_strerror(res));
+            {   
+                auto j = json::parse(std::string("{ \"message\":\"" + std::string(curl_easy_strerror(res)) + "\"}"));
+                return j;
+            }
 
             curl_easy_cleanup(curl);
         }

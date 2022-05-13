@@ -5,6 +5,15 @@
 
 namespace logrush
 {
+    struct LogRushException : std::exception
+    {
+        LogRushException(std::string msg) : msg(msg) {}
+        std::string msg;
+        const char* what () const throw () {
+            return msg.data();
+        }
+    };
+    
     class BasicLogStream {
     public:
         BasicLogStream(std::string url, std::string id, std::string key);
