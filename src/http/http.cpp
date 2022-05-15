@@ -1,5 +1,6 @@
 #include "./http.h"
 
+#include <iostream>
 #include <curl/curl.h>
 
 namespace logrush
@@ -36,9 +37,8 @@ namespace logrush
             curl_easy_cleanup(curl);
         }
         curl_global_cleanup();
-        std::string resb = readBuffer;
-
-        auto j = json::parse(resb);
+        std::cout << readBuffer.data() << std::endl;
+        auto j = json::parse(readBuffer);
         return j;
     }
 

@@ -24,16 +24,19 @@ namespace logrush
         json ret = post(url + "/stream/register", b);
 
         auto m = ret.find("message");
-        if (m->is_string())
-            throw LogRushException((m->get<std::string>()).c_str());
+        if (m != ret.end())
+            if (m->is_string())
+                throw LogRushException((m->get<std::string>()).c_str());
         
         auto i = ret.find("id");
-        if (i->is_string())
-            id = i->get<std::string>();
+        if (i != ret.end())
+            if (i->is_string())
+                id = i->get<std::string>();
 
         auto k = ret.find("key");
-        if (k->is_string())
-            key = k->get<std::string>();
+        if (k != ret.end())
+            if (k->is_string())
+                key = k->get<std::string>();
 
         return BasicLogStream(url, id, key);
     }
@@ -50,16 +53,19 @@ namespace logrush
         json ret = post(url + "/stream/register", b);
 
         auto m = ret.find("message");
-        if (m->is_string())
-            throw LogRushException((m->get<std::string>()).c_str());
-
+        if (m != ret.end())
+            if (m->is_string())
+                throw LogRushException((m->get<std::string>()).c_str());
+        
         auto i = ret.find("id");
-        if (i->is_string())
-            id = i->get<std::string>();
+        if (i != ret.end())
+            if (i->is_string())
+                id = i->get<std::string>();
 
         auto k = ret.find("key");
-        if (k->is_string())
-            key = k->get<std::string>();
+        if (k != ret.end())
+            if (k->is_string())
+                key = k->get<std::string>();
 
         return BatchLogStream(url, id, key, batch_size);
     }
