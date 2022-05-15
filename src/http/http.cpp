@@ -37,7 +37,6 @@ namespace logrush
             curl_easy_cleanup(curl);
         }
         curl_global_cleanup();
-        std::cout << readBuffer.data() << std::endl;
         auto j = json::parse(readBuffer);
         return j;
     }
