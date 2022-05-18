@@ -6,6 +6,14 @@ Todo CMake install
 Todo conan install
 
 ## Usage
+### include in CMake
+add the following lines to yout CMakeLists.txt
+```cmake
+find_package(logrush)
+⋮
+# in your target_link_libraries
+target_link_libraries(<TARGET> logrush::logrush) 
+```
 ### creating an LogRushClient
 ```c++
 #include <logrush/logrush.h>
@@ -30,3 +38,11 @@ stream.log("<message>");
 ```c++
 client.unregister(stream);
 ```
+
+## Examples
+
+in the examples directory you can find two simple programms which use the logrush lib.
+
+## Spdlog
+
+this [repository](https://github.com/log-rush/cpp-client/tree/main/examples/spdlog/) contains two logging sinks for the spdlog library one for basic logging and one for batched logging.
