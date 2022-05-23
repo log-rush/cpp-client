@@ -1,8 +1,4 @@
-from conans import ConanFile, CMake, tools
-from conans.errors import ConanInvalidConfiguration
-import os
-
-from importlib_metadata import requires
+from conans import ConanFile, CMake
 
 class LogRushConan(ConanFile):
     name = "logrush"
